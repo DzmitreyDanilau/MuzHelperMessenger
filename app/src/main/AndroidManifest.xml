@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".registration.presentation.RegistrationActivity">
         </activity>
+        <activity android:name=".login.presentation.AuthActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
