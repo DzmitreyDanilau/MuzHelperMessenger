@@ -13,6 +13,7 @@
         <activity android:name=".registration.presentation.RegistrationActivity">
         </activity>
         <activity android:name=".login.presentation.AuthActivity" />
+        <activity android:name=".home.presentation.HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
