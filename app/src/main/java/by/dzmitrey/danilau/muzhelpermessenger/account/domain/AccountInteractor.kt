@@ -1,7 +1,6 @@
 package by.dzmitrey.danilau.muzhelpermessenger.account.domain
 
 import by.dzmitrey.danilau.muzhelpermessenger.account.data.repositories.AccountRepository
-import by.dzmitrey.danilau.muzhelpermessenger.base.domain.network.Result
 import by.dzmitrey.danilau.muzhelpermessenger.network.responses.RegisterResponse
 
 class AccountInteractor (

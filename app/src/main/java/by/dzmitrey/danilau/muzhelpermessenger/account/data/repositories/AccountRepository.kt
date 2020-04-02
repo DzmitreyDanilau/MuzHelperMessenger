@@ -3,7 +3,6 @@ package by.dzmitrey.danilau.muzhelpermessenger.account.data.repositories
 import by.dzmitrey.danilau.muzhelpermessenger.account.data.AccountCache
 import by.dzmitrey.danilau.muzhelpermessenger.account.domain.RegisterEntity
 import by.dzmitrey.danilau.muzhelpermessenger.network.ApiService
-import by.dzmitrey.danilau.muzhelpermessenger.base.domain.network.Result
 import by.dzmitrey.danilau.muzhelpermessenger.network.responses.RegisterResponse
 
 class AccountRepository (

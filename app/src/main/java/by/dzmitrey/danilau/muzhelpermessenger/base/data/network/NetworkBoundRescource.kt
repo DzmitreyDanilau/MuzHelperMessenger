@@ -1,5 +1,6 @@
-package by.dzmitrey.danilau.muzhelpermessenger.base.domain.network
+package by.dzmitrey.danilau.muzhelpermessenger.base.data.network
 
+import by.dzmitrey.danilau.muzhelpermessenger.base.data.repository.safeApiCall
 import by.dzmitrey.danilau.muzhelpermessenger.utils.ErrorsConstants
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
@@ -15,8 +16,6 @@ constructor(
     private val cacheCall: suspend () -> CacheObj?
 ) {
 
-    private val TAG: String = "AppDebug"
-
     val result: Flow<DataState<ViewState>> = flow {
 
         // ****** STEP 1: VIEW CACHE ******
@@ -26,8 +25,7 @@ constructor(
         val apiResult = safeApiCall(dispatcher) { apiCall.invoke() }
 
         when (apiResult) {
-            is ApiResult.GenericError -> {
-                emit(buildError(apiResult.errorMessage?.let {
+            is ApiResult.GenericError -> { emit(buildError(apiResult.errorMessage?.let {
                     it
                 } ?: ErrorsConstants.ERROR_UNKNOWN, UIComponentType.Dialog(), stateEvent))
             }
