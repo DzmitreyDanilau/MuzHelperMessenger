@@ -9,4 +9,5 @@ data class ErrorResponse(
 
     @Json(name = "message")
     val message: String
+
 )

@@ -22,14 +22,6 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
     lateinit var viewModel: V
     private var toolbar: Toolbar? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
-        Timber.d("onCreate %s", this.toString())
-        initViews()
-    }
-
-
     fun hideSoftKeyboard() {
         if (currentFocus != null) {
             val inputMethodManager =
@@ -38,17 +30,25 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
         }
     }
 
+
     fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount == 1) finish() else super.onBackPressed()
     }
 
     fun closeAndStartAnother(intent: Intent) {
         finish()
         startActivity(intent)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(layoutResId)
+        Timber.d("onCreate %s", this.toString())
+        initViews()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) finish() else super.onBackPressed()
     }
 
     private fun setToolbarTitle(title: String?) {

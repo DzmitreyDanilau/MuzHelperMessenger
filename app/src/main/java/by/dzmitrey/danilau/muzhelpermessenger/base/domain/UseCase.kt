@@ -3,7 +3,6 @@ package by.dzmitrey.danilau.muzhelpermessenger.base.domain
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-
 abstract class BaseUseCase<in Params> : CoroutineScope {
 
     private val parentJob = SupervisorJob()

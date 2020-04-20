@@ -22,10 +22,6 @@ abstract class BaseFragment<V : BaseViewModel> : Fragment() {
     open val showToolbar = true
     open val toolBarTitle = R.string.app_name
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(fragmentResId, container, false)
-    }
-
     fun showMessage(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
@@ -37,8 +33,12 @@ abstract class BaseFragment<V : BaseViewModel> : Fragment() {
         }
     }
 
-    @get:LayoutRes
-    abstract val fragmentResId: Int
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(fragmentResId, container, false)
+    }
 
     protected abstract fun getViewModelClass(): KClass<V>
+
+    @get:LayoutRes
+    abstract val fragmentResId: Int
 }

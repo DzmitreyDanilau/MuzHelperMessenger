@@ -20,7 +20,7 @@ class ChatModuleApp : Application() {
         Timber.plant(Timber.DebugTree())
     }
 
-    private fun initApplicationComponent() : ApplicationComponent {
-     return   DaggerApplicationComponent.create()
+    private fun initApplicationComponent(): ApplicationComponent {
+        return DaggerApplicationComponent.create()
     }
 }

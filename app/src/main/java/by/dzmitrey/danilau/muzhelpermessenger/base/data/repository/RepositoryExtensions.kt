@@ -1,7 +1,7 @@
 package by.dzmitrey.danilau.muzhelpermessenger.base.data.repository
 
 import by.dzmitrey.danilau.muzhelpermessenger.base.data.CacheResult
-import by.dzmitrey.danilau.muzhelpermessenger.base.data.network.ApiResult
+import by.dzmitrey.danilau.muzhelpermessenger.base.data.network.ApiResponse
 import by.dzmitrey.danilau.muzhelpermessenger.network.responses.ErrorResponse
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Constants.Companion.CACHE_TIMEOUT
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Constants.Companion.NETWORK_TIMEOUT
@@ -17,28 +17,28 @@ import kotlinx.coroutines.withTimeout
 import retrofit2.HttpException
 import java.io.IOException
 
-suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, apiCall: suspend () -> T?): ApiResult<T?> {
+suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, apiCall: suspend () -> T): ApiResponse<T> {
     return withContext(dispatcher) {
         withTimeout(NETWORK_TIMEOUT) {
             try {
-                ApiResult.Success(apiCall.invoke())
+                ApiResponse.Success(apiCall.invoke())
             } catch (throwable: Throwable) {
                 when (throwable) {
-                    is TimeoutCancellationException -> ApiResult.GenericError(TIME_OUT_ERROR_CODE, NETWORK_ERROR_TIMEOUT)
-                    is IOException -> ApiResult.NetworkError
+                    is TimeoutCancellationException -> ApiResponse.GenericError(TIME_OUT_ERROR_CODE, NETWORK_ERROR_TIMEOUT)
+                    is IOException -> ApiResponse.NetworkError
                     is HttpException -> {
                         val errorCode = throwable.code()
                         val errorResponse = convertErrorBody(throwable)
-                        ApiResult.GenericError(errorCode, errorResponse?.message)
+                        ApiResponse.GenericError(errorCode, errorResponse?.message)
                     }
-                    else -> ApiResult.GenericError(null, ERROR_UNKNOWN)
+                    else -> ApiResponse.GenericError(null, ERROR_UNKNOWN)
                 }
             }
         }
     }
 }
 
-suspend fun <T> safeCacheCall(dispatcher: CoroutineDispatcher, cacheCall: suspend () -> T?): CacheResult<T?> {
+suspend fun <T> safeCacheCall(dispatcher: CoroutineDispatcher, cacheCall: suspend () -> T): CacheResult<T> {
     return withContext(dispatcher) {
         try {
             withTimeout(CACHE_TIMEOUT) {
