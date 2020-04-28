@@ -9,4 +9,5 @@ sealed class Error {
     object ResponseError : Error()
 
     object PersistenceError : Error()
+
 }

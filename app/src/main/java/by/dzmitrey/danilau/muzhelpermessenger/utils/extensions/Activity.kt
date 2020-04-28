@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.extensions
+package by.dzmitrey.danilau.muzhelpermessenger.utils.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

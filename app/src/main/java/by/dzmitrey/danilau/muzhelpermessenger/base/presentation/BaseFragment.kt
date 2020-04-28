@@ -9,7 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.dzmitrey.danilau.muzhelpermessenger.R
-import by.dzmitrey.danilau.muzhelpermessenger.extensions.base
+import by.dzmitrey.danilau.muzhelpermessenger.utils.extensions.base
 import javax.inject.Inject
 import kotlin.reflect.KClass
 

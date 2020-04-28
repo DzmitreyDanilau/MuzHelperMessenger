@@ -13,7 +13,6 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel>() {
 
     override val fragmentResId = R.layout.fragment_registration
 
-    override fun getViewModelClass(): KClass<RegistrationViewModel> {
-        TODO("Not yet implemented")
-    }
+    override fun getViewModelClass() = RegistrationViewModel::class
+
 }

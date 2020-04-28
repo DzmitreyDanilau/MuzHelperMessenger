@@ -1,13 +1,17 @@
 package by.dzmitrey.danilau.muzhelpermessenger.registration.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.R
+import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
+import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseViewModel
 
-class RegistrationActivity : AppCompatActivity() {
+class RegistrationActivity : BaseActivity<BaseViewModel>() {
+
+    override val layoutResId: Int
+        get() = R.layout.activity_registration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        supportFragmentManager.beginTransaction().replace(R.id.registrationFragmentContainer, RegistrationFragment()).commit()
     }
 }
