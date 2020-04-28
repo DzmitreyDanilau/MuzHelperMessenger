@@ -1,5 +1,6 @@
 package by.dzmitrey.danilau.muzhelpermessenger.utils.extensions
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -34,3 +35,8 @@ fun AppCompatActivity.clearBackStack() {
 @Suppress("UNCHECKED_CAST")
 fun <T : BaseViewModel> FragmentActivity.base(block: BaseActivity<T>.() -> Unit) =
     (this as BaseActivity<T>).let(block)
+
+fun AppCompatActivity.closeAndStartAnother(intent: Intent) {
+    finish()
+    startActivity(intent)
+}

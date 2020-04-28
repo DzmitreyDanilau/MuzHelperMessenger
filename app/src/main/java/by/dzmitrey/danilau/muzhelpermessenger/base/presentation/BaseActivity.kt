@@ -8,16 +8,12 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import timber.log.Timber
 import javax.inject.Inject
-import kotlin.reflect.KClass
 
-abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
     @Inject
     protected lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -50,11 +46,6 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun closeAndStartAnother(intent: Intent) {
-        finish()
-        startActivity(intent)
-    }
-
     private fun initViews() {
         toolbar = findViewById(R.id.toolbar)
     }
@@ -67,5 +58,4 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
 
     @get:LayoutRes
     abstract val layoutResId: Int
-
 }
