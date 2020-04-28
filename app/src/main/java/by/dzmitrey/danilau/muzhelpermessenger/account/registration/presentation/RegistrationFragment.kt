@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.registration.presentation
+package by.dzmitrey.danilau.muzhelpermessenger.account.registration.presentation
 
 import android.content.Context
 import android.content.Intent

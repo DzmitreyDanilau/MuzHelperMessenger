@@ -1,8 +1,8 @@
 package by.dzmitrey.danilau.muzhelpermessenger.di.components
 
 import by.dzmitrey.danilau.muzhelpermessenger.di.scopes.ActivityScope
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.RegistrationActivity
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.RegistrationFragment
+import by.dzmitrey.danilau.muzhelpermessenger.account.registration.presentation.RegistrationActivity
+import by.dzmitrey.danilau.muzhelpermessenger.account.registration.presentation.RegistrationFragment
 import dagger.Subcomponent
 
 @ActivityScope

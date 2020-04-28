@@ -1,11 +1,10 @@
-package by.dzmitrey.danilau.muzhelpermessenger.registration.presentation
+package by.dzmitrey.danilau.muzhelpermessenger.account.registration.presentation
 
 import android.content.Intent
 import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
-import by.dzmitrey.danilau.muzhelpermessenger.di.components.ApplicationComponent
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.RegistrationComponent
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
 import javax.inject.Inject

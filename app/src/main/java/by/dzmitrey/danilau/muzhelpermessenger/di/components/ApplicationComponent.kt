@@ -3,9 +3,8 @@ package by.dzmitrey.danilau.muzhelpermessenger.di.components
 import android.content.Context
 import by.dzmitrey.danilau.muzhelpermessenger.di.modules.AppSubComponentsModule
 import by.dzmitrey.danilau.muzhelpermessenger.di.modules.ApplicationModule
+import by.dzmitrey.danilau.muzhelpermessenger.di.modules.NetworkModule
 import by.dzmitrey.danilau.muzhelpermessenger.di.modules.ViewModelFactoryModule
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.RegistrationActivity
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.RegistrationFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -15,6 +14,7 @@ import javax.inject.Singleton
     modules = [
         ApplicationModule::class,
         AppSubComponentsModule::class,
+        NetworkModule::class,
         ViewModelFactoryModule::class,
         AppSubComponentsModule::class
     ]

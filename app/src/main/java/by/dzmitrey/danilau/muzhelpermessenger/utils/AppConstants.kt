@@ -4,7 +4,7 @@ class Constants {
 
     companion object{
 
-        const val BASE_URL = ""
+        const val BASE_URL = "chat.alpacapp.com/rest_api"
 
         const val NETWORK_TIMEOUT = 6000L
         const val CACHE_TIMEOUT = 2000L

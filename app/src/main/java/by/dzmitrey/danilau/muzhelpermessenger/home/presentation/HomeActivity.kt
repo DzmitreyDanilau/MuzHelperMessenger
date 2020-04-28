@@ -3,7 +3,7 @@ package by.dzmitrey.danilau.muzhelpermessenger.home.presentation
 import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.RegistrationViewModel
+import by.dzmitrey.danilau.muzhelpermessenger.account.registration.presentation.RegistrationViewModel
 
 class HomeActivity : BaseActivity<RegistrationViewModel>() {
 

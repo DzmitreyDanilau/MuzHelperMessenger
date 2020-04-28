@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.account.domain
+package by.dzmitrey.danilau.muzhelpermessenger.account.registration.domain
 
 class RegisterEntity(
     private val email: String,

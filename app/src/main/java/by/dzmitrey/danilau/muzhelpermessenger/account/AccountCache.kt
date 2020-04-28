@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.account.data
+package by.dzmitrey.danilau.muzhelpermessenger.account
 
 class AccountCache {
 
