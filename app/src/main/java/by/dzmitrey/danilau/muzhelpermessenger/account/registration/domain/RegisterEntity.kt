@@ -1,9 +1,13 @@
 package by.dzmitrey.danilau.muzhelpermessenger.account.registration.domain
 
 class RegisterEntity(
-    private val email: String,
-    private val password: String,
-    private val token: String,
-    private val registerData: String
+    val name: String,
+    val email: String,
+    val password: String,
+    val token: String,
+    val status: String = "",
+    val image: String = "",
+    //Temporary it is 0
+    val registrationDate: Int = 0,
+    val lastSeenTime: Int = 0
 )
-

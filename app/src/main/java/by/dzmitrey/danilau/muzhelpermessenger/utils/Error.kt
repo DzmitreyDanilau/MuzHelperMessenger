@@ -1,13 +1,13 @@
 package by.dzmitrey.danilau.muzhelpermessenger.utils
 
-sealed class Error {
+sealed class Error(val message: String? = null) {
 
-    object NetworkError : Error()
+    class NetworkError(message: String) : Error()
 
-    object GenericError : Error()
+    class GenericError(message: String) : Error()
 
-    object ResponseError : Error()
+    class ResponseError(message: String) : Error()
 
-    object PersistenceError : Error()
+    class PersistenceError(message: String) : Error()
 
 }

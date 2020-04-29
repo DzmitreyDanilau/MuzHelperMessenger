@@ -56,15 +56,15 @@ sealed class ApiResponse<out T> {
          * If [retrofit2.Response] has no errors, it will create [ApiResponse.Success]
          * If [retrofit2.Response] has errors, it will create [ApiResponse.Failure.Error]
          */
-        fun <T> of(f: () -> Response<T>): ApiResponse<T> = try {
-            val response = f()
+        fun <T> of(request: () -> Response<T>): ApiResponse<T> = try {
+            val response = request()
             if (response.isSuccessful) {
                 Success(response)
             } else {
                 Failure.Error(response)
             }
-        } catch (ex: Exception) {
-            Failure.Exception(ex)
+        } catch (exception: Exception) {
+            Failure.Exception(exception)
         }
     }
 }
