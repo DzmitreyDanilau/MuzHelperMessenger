@@ -3,6 +3,7 @@ package by.dzmitrey.danilau.muzhelpermessenger.base.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.LayoutRes
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import by.dzmitrey.danilau.muzhelpermessenger.R
+import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -44,6 +46,11 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
     fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun showSnackBar(view: View) {
+        //TEMPORARY SnackBar text
+        Snackbar.make(view, R.string.tools_registration_failed_text, Snackbar.LENGTH_SHORT)
     }
 
     private fun initViews() {

@@ -6,6 +6,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--                            BASE STYLES                            -->
+
     <!--Base Input Layout-->
     <style name="InputLayoutBaseTheme">
         <item name="boxBackgroundColor">@color/transparent</item>
@@ -15,5 +17,17 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <!-- Base TextView style -->
+    <style name="BaseTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_quarter_margin</item>
+        <item name="android:layout_marginEnd">@dimen/default_quarter_margin</item>
+    </style>
+
+    <!--                           APP VIEWS STYLES                            -->
+
 
 </resources>
