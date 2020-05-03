@@ -42,29 +42,29 @@ sealed class ApiResponse<out T> {
     }
 
     companion object {
-        /**
-         * ApiResponse Factory
-         *
-         * [Failure] factory function. Only receives [Throwable] arguments.
-         */
-        fun <T> error(ex: Throwable) = Failure.Exception<T>(ex)
+                /**
+                 * ApiResponse Factory
+                 *
+                 * [Failure] factory function. Only receives [Throwable] arguments.
+                 */
+                fun <T> error(ex: Throwable) = Failure.Exception<T>(ex)
 
-        /**
-         * ApiResponse Factory
-         *
-         * [f] Create ApiResponse from [retrofit2.Response] returning from the block.
-         * If [retrofit2.Response] has no errors, it will create [ApiResponse.Success]
-         * If [retrofit2.Response] has errors, it will create [ApiResponse.Failure.Error]
-         */
-        fun <T> of(request: () -> Response<T>): ApiResponse<T> = try {
-            val response = request()
-            if (response.isSuccessful) {
-                Success(response)
-            } else {
-                Failure.Error(response)
-            }
-        } catch (exception: Exception) {
-            Failure.Exception(exception)
+                /**
+                 * ApiResponse Factory
+                 *
+                 * [f] Create ApiResponse from [retrofit2.Response] returning from the block.
+                 * If [retrofit2.Response] has no errors, it will create [ApiResponse.Success]
+                 * If [retrofit2.Response] has errors, it will create [ApiResponse.Failure.Error]
+                 */
+                fun <T> of(request: () -> Response<T>): ApiResponse<T> = try {
+                    val response = request()
+                    if (response.isSuccessful) {
+                        Success(response)
+                    } else {
+                        Failure.Error(response)
+                    }
+                } catch (exception: Exception) {
+                    Failure.Exception(exception)
         }
     }
 }

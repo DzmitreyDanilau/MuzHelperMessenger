@@ -1,7 +1,6 @@
 package by.dzmitrey.danilau.muzhelpermessenger.network
 
 import by.dzmitrey.danilau.muzhelpermessenger.network.responses.ApiResponse
-import by.dzmitrey.danilau.muzhelpermessenger.network.responses.BaseResponse
 import retrofit2.Call
 import retrofit2.Callback
 

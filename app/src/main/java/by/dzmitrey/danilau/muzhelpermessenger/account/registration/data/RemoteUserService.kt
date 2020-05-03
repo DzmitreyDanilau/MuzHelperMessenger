@@ -36,4 +36,8 @@ class RemoteUserService @Inject constructor(private val apiService: ApiService) 
         map[PARAM_LAST_SEEN] = registerEntity.lastSeenTime.toString()
         return map
     }
+
+//    fun registerUser(registerEntity: RegisterEntity): RegistrationResult {
+//        val requestResult = apiService.register(createRegisterMap(registerEntity))
+//    }
 }
