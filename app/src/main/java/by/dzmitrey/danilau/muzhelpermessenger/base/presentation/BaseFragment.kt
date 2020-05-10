@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.utils.extensions.base
-import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 import kotlin.reflect.KClass
 

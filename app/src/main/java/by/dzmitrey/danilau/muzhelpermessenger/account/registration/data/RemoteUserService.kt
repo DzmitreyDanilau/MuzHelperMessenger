@@ -7,7 +7,10 @@ import by.dzmitrey.danilau.muzhelpermessenger.network.responses.RegisterResponse
 import by.dzmitrey.danilau.muzhelpermessenger.network.transform
 import javax.inject.Inject
 
-class RemoteUserService @Inject constructor(private val apiService: ApiService) {
+class RemoteUserService @Inject constructor(
+    private val responseHandler: RegisterResponseHandler,
+    private val apiService: ApiService
+) {
 
     companion object {
         const val PARAM_EMAIL = "email"
@@ -21,7 +24,7 @@ class RemoteUserService @Inject constructor(private val apiService: ApiService) 
     }
 
     fun registerUser(registerEntity: RegisterEntity, onResult: (response: ApiResponse<RegisterResponse>) -> Unit) {
-        apiService.register(createRegisterMap(registerEntity)).transform(onResult)
+        return responseHandler.handleResponse(apiService.register(createRegisterMap(registerEntity)))
     }
 
     private fun createRegisterMap(registerEntity: RegisterEntity): Map<String, String> {
