@@ -8,6 +8,8 @@ import retrofit2.http.POST
 interface ApiService {
 
     @POST("register.php")
-    fun register(@FieldMap registerParams: Map<String, String>): Call<RegisterResponse>
+    fun register(
+        @FieldMap registerParams: Map<String, String>
+    ): RegisterResponse
 
 }

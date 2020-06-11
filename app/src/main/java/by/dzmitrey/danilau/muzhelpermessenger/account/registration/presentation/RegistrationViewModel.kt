@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import by.dzmitrey.danilau.muzhelpermessenger.account.registration.data.RegistrationRepository
 import by.dzmitrey.danilau.muzhelpermessenger.account.registration.domain.RegisterEntity
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseViewModel
+import by.dzmitrey.danilau.muzhelpermessenger.utils.ApiResponse
 import by.dzmitrey.danilau.muzhelpermessenger.utils.State
 import by.dzmitrey.danilau.muzhelpermessenger.utils.State.Exception
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,6 @@ class RegistrationViewModel @Inject constructor(private val registerRepository: 
 
     private val isRegistrationFinished by lazy { MutableLiveData<UIState>() }
 
-
     fun getIsRegistrationFinished(): LiveData<UIState> = isRegistrationFinished
 
     fun register(registerEntity: RegisterEntity) {
@@ -25,7 +25,7 @@ class RegistrationViewModel @Inject constructor(private val registerRepository: 
             withContext(Dispatchers.IO) {
                 registerRepository.register(registerEntity) {
                     when (it) {
-                        is State.Success -> {
+                        is ApiResponse.Success -> {
                             isRegistrationFinished.postValue(UIState.Data)
                         }
                         is Error -> {

@@ -3,7 +3,6 @@ package by.dzmitrey.danilau.muzhelpermessenger.utils
 class ErrorsConstants {
 
     companion object{
-
         const val UNABLE_TO_RESOLVE_HOST = "Unable to resolve host"
         const val UNABLE_TODO_OPERATION_WO_INTERNET = "Can't do that operation without an internet connection"
         const val ERROR_SAVE_ACCOUNT_PROPERTIES = "Error saving account properties.\nTry restarting the app."
@@ -15,5 +14,7 @@ class ErrorsConstants {
         const val NETWORK_ERROR_TIMEOUT = "Network timeout"
         const val CACHE_ERROR_TIMEOUT = "Cache timeout"
 
+        //Error codes
+        const val TIME_OUT_EXCEPTION_CODE = 408
     }
 }

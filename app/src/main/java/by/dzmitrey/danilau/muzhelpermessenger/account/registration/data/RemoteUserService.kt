@@ -2,13 +2,10 @@ package by.dzmitrey.danilau.muzhelpermessenger.account.registration.data
 
 import by.dzmitrey.danilau.muzhelpermessenger.account.registration.domain.RegisterEntity
 import by.dzmitrey.danilau.muzhelpermessenger.network.ApiService
-import by.dzmitrey.danilau.muzhelpermessenger.network.responses.ApiResponse
 import by.dzmitrey.danilau.muzhelpermessenger.network.responses.RegisterResponse
-import by.dzmitrey.danilau.muzhelpermessenger.network.transform
 import javax.inject.Inject
 
 class RemoteUserService @Inject constructor(
-    private val responseHandler: RegisterResponseHandler,
     private val apiService: ApiService
 ) {
 
@@ -23,8 +20,16 @@ class RemoteUserService @Inject constructor(
         const val PARAM_LAST_SEEN = "last_seen"
     }
 
-    fun registerUser(registerEntity: RegisterEntity, onResult: (response: ApiResponse<RegisterResponse>) -> Unit) {
-        return responseHandler.handleResponse(apiService.register(createRegisterMap(registerEntity)))
+    fun registerUser(registerEntity: RegisterEntity): RegistrationResult {
+        return convert(apiService.register(createRegisterMap(registerEntity)))
+    }
+
+    private fun convert(response: RegisterResponse): RegistrationResult {
+        return if (response.success == 1) {
+            RegistrationResult.RegistrationPassed(response.message)
+        } else {
+            RegistrationResult.RegistrationPassed(response.message)
+        }
     }
 
     private fun createRegisterMap(registerEntity: RegisterEntity): Map<String, String> {
@@ -39,8 +44,4 @@ class RemoteUserService @Inject constructor(
         map[PARAM_LAST_SEEN] = registerEntity.lastSeenTime.toString()
         return map
     }
-
-//    fun registerUser(registerEntity: RegisterEntity): RegistrationResult {
-//        val requestResult = apiService.register(createRegisterMap(registerEntity))
-//    }
 }
