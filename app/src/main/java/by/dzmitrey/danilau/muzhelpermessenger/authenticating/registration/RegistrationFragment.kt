@@ -1,3 +1,3 @@
 package by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration
 
-
+class RegistrationFragment

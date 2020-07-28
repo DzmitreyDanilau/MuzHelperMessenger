@@ -11,7 +11,7 @@ class ApplicationModule(private val application: ChatModuleApp) {
 
     @Provides
     @Singleton
-    fun provideApplication(): ChatModuleApp = application
+    fun provideApplication() : ChatModuleApp = application
 
     @Provides
     @Singleton
