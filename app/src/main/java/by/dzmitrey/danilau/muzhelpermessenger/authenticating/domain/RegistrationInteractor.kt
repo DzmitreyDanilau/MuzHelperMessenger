@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.registration.domain
+package by.dzmitrey.danilau.muzhelpermessenger.authenticating.domain
 
 import by.dzmitrey.danilau.muzhelpermessenger.account.domain.RegisterEntity
 import by.dzmitrey.danilau.muzhelpermessenger.base.domain.BaseUseCase

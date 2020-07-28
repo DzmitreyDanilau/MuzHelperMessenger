@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">MuzHelperMessenger</string>
-
-
     <!--Login-->
     <string name="hint_login">Login</string>
-
+    <string name="hint_email">Input email…</string>
+    <string name="hint_password">nput password…</string>
 </resources>

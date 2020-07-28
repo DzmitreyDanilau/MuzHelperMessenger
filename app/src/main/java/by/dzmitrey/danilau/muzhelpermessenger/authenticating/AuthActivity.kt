@@ -1,17 +1,17 @@
-package by.dzmitrey.danilau.muzhelpermessenger.registration.presentation
+package by.dzmitrey.danilau.muzhelpermessenger.authenticating
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import by.dzmitrey.danilau.muzhelpermessenger.R
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.signIn.FirebaseSignInManager
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.signIn.FirebaseSignInManager.Companion.RESULT_CODE_GOOGLE_SIGN_IN
-import by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.signIn.FirebaseSignInManager.Companion.RESULT_CODE_ONE_TAP_AUTH
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseSignInManager
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseSignInManager.Companion.RESULT_CODE_GOOGLE_SIGN_IN
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseSignInManager.Companion.RESULT_CODE_ONE_TAP_AUTH
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import kotlinx.android.synthetic.main.content_chat.*
 
-class RegistrationActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity() {
 
     lateinit var firebaseAuthManager: FirebaseSignInManager
 

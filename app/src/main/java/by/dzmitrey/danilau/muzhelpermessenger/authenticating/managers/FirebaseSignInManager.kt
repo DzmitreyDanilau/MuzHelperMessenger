@@ -1,4 +1,4 @@
-package by.dzmitrey.danilau.muzhelpermessenger.registration.presentation.signIn
+package by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers
 
 import android.content.IntentSender
 import android.view.View
