@@ -4,41 +4,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.annotation.MainThread
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.createViewModelLazy
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import by.dzmitrey.danilau.muzhelpermessenger.R
-import by.dzmitrey.danilau.muzhelpermessenger.extensions.base
+import by.dzmitrey.danilau.muzhelpermessenger.extensions.EMPTY
 import javax.inject.Inject
-import kotlin.reflect.KClass
 
-abstract class BaseFragment<V : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment() {
 
     @Inject
-    protected lateinit var viewModelFactory: ViewModelProvider.Factory
-    protected lateinit var viewModel: V
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    protected lateinit var binding: B
+
+    abstract val viewModel: VM
 
     open val showToolbar = true
-    open val toolBarTitle = R.string.app_name
 
-    fun showMessage(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
-    }
-
-    fun isToolBarShow() {
-        activity?.base<V> {
-            if (showToolbar) supportActionBar?.show() else supportActionBar?.hide()
-            supportActionBar?.title = getString(toolBarTitle)
-        }
-    }
+    open val toolBarTitle = String.EMPTY
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(fragmentResId, container, false)
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        return binding.root
     }
 
-    protected abstract fun getViewModelClass(): KClass<V>
+    @MainThread
+    inline fun <reified VM : ViewModel> lazyViewModel() =
+        createViewModelLazy(VM::class, { this.viewModelStore }, { viewModelFactory })
 
-    @get:LayoutRes
-    abstract val fragmentResId: Int
+    @LayoutRes
+    abstract fun getLayoutId(): Int
 }

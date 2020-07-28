@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
-import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseViewModel
 
 fun FragmentActivity.addBackStackFragment(id: Int, fragment: Fragment) =
     supportFragmentManager.beginTransaction().addToBackStack(null).add(id, fragment).commit()
@@ -30,7 +28,3 @@ fun AppCompatActivity.clearBackStack() {
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 }
-
-@Suppress("UNCHECKED_CAST")
-fun <T : BaseViewModel> FragmentActivity.base(block: BaseActivity<T>.() -> Unit) =
-    (this as BaseActivity<T>).let(block)

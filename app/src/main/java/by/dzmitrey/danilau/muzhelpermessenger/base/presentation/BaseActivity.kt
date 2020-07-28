@@ -14,12 +14,11 @@ import timber.log.Timber
 import javax.inject.Inject
 import kotlin.reflect.KClass
 
-abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     @Inject
     protected lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var viewModel: V
     private var toolbar: Toolbar? = null
 
     fun hideSoftKeyboard() {
@@ -63,6 +62,4 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
 
     @get:LayoutRes
     abstract val layoutResId: Int
-
-    protected abstract fun getViewModelClass(): KClass<V>
 }
