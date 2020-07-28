@@ -1,20 +1,13 @@
 package by.dzmitrey.danilau.muzhelpermessenger.base.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
+abstract class BaseViewModel : ViewModel() {
+    private val error: MutableLiveData<Throwable> = MutableLiveData()
 
-    private val compositeJob = Job()
+    fun getError(): LiveData<Throwable> = error
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + compositeJob
-
-    override fun onCleared() {
-        compositeJob.cancel()
-        super.onCleared()
-    }
 }
+

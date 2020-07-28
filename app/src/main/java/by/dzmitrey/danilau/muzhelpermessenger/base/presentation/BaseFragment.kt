@@ -4,41 +4,52 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.createViewModelLazy
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import by.dzmitrey.danilau.muzhelpermessenger.R
-import by.dzmitrey.danilau.muzhelpermessenger.extensions.base
+import androidx.viewbinding.ViewBinding
+import by.dzmitrey.danilau.muzhelpermessenger.extensions.EMPTY
 import javax.inject.Inject
-import kotlin.reflect.KClass
 
-abstract class BaseFragment<V : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
     @Inject
-    protected lateinit var viewModelFactory: ViewModelProvider.Factory
-    protected lateinit var viewModel: V
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    protected var binding: B? = null
+
+    abstract val viewModel: VM
 
     open val showToolbar = true
-    open val toolBarTitle = R.string.app_name
 
-    fun showMessage(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
-    }
+    open val toolBarTitle = String.EMPTY
 
-    fun isToolBarShow() {
-        activity?.base<V> {
-            if (showToolbar) supportActionBar?.show() else supportActionBar?.hide()
-            supportActionBar?.title = getString(toolBarTitle)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        performDI()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(fragmentResId, container, false)
+        binding = this.setBinding(inflater, container)
+        return binding!!.root
     }
 
-    protected abstract fun getViewModelClass(): KClass<V>
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
-    @get:LayoutRes
-    abstract val fragmentResId: Int
+    @MainThread
+    inline fun <reified VM : ViewModel> lazyViewModel() =
+        createViewModelLazy(VM::class, { this.viewModelStore }, { viewModelFactory })
+
+    @LayoutRes
+    abstract fun getLayoutId(): Int
+
+    abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean = false): B
+
+    abstract fun performDI()
 }

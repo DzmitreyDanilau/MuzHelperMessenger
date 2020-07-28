@@ -8,19 +8,31 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import timber.log.Timber
-import javax.inject.Inject
-import kotlin.reflect.KClass
 
-abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
-    @Inject
-    protected lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    lateinit var viewModel: V
     private var toolbar: Toolbar? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        performDI()
+        super.onCreate(savedInstanceState)
+        setContentView(viewBinding.root)
+        Timber.d("onCreate %s", this.toString())
+        initViews()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) finish() else super.onBackPressed()
+    }
+
+    fun setToolbarTitle(title: String?) {
+        title?.let {
+            toolbar?.title = title
+        }
+    }
 
     fun hideSoftKeyboard() {
         if (currentFocus != null) {
@@ -29,7 +41,6 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
             inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
         }
     }
-
 
     fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -40,29 +51,15 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
-        Timber.d("onCreate %s", this.toString())
-        initViews()
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount == 1) finish() else super.onBackPressed()
-    }
-
-    private fun setToolbarTitle(title: String?) {
-        title?.let {
-            toolbar?.title = title
-        }
-    }
-
     private fun initViews() {
         toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
     }
 
     @get:LayoutRes
     abstract val layoutResId: Int
 
-    protected abstract fun getViewModelClass(): KClass<V>
+    protected abstract fun performDI()
+
+    abstract val viewBinding: ViewBinding
 }
