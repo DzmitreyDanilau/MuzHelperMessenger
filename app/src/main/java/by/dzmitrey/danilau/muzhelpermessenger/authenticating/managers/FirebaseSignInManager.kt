@@ -24,8 +24,8 @@ class FirebaseSignInManager(private val context: FragmentActivity) {
         const val RESULT_CODE_GOOGLE_SIGN_IN = 2468
     }
 
-    lateinit var oneTapClient: SignInClient
-    lateinit var signInRequest: BeginSignInRequest
+    private lateinit var oneTapClient: SignInClient
+    private lateinit var signInRequest: BeginSignInRequest
     private var firebaseAuth: FirebaseAuth = Firebase.auth
     var userDeclineOneTap = false
 
