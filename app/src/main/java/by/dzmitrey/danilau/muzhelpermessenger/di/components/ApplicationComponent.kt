@@ -14,15 +14,11 @@ import javax.inject.Singleton
         ApplicationModule::class,
         AppSubComponentsModule::class,
         ViewModelFactoryModule::class,
-        AppSubComponentsModule::class]
+        AppSubComponentsModule::class
+    ]
 )
 interface ApplicationComponent {
 
-    @Component.Factory
-    interface Factory {
-        // With @BindsInstance, the Context passed in will be available in the graph
-        fun create(@BindsInstance context: Context): ApplicationComponent
-    }
-
     fun registrationComponent(): RegistrationComponent.Factory
+    fun homeComponent(): HomeComponent.Factory
 }

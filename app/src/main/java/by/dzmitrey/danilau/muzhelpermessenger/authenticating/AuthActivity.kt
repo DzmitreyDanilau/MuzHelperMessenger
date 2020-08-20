@@ -1,6 +1,5 @@
 package by.dzmitrey.danilau.muzhelpermessenger.authenticating
 
-import android.content.Intent
 import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
@@ -10,10 +9,11 @@ import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
 import javax.inject.Inject
 
 class AuthActivity : BaseActivity() {
+
     @Inject
     lateinit var navigator: Navigator
 
-    lateinit var registrationComponent: RegistrationComponent.RegistrationComponent
+    lateinit var registrationComponent: RegistrationComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
@@ -29,7 +29,7 @@ class AuthActivity : BaseActivity() {
         registrationComponent.inject(this)
     }
 
-    private fun navigateToHomeActivity(intent: Intent) {
-        navigator.navigateToHomeActivity(intent)
+    private fun navigateToHomeActivity() {
+        navigator.navigateHome(this)
     }
 }

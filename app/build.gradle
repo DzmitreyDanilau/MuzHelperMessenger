@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -21,8 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        dataBinding  = true
     }
 
     compileOptions {
@@ -68,9 +68,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
     kapt "com.google.dagger:dagger-android-processor:${daggerVersion}"
-
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     //common
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

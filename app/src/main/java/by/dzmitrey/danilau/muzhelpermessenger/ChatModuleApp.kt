@@ -6,9 +6,9 @@ import timber.log.Timber
 
 class ChatModuleApp : Application() {
 
-//    val appComponent: ApplicationComponent by lazy {
-//        initApplicationComponent()
-//    }
+    val appComponent: ApplicationComponent by lazy {
+        initApplicationComponent()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -19,7 +19,7 @@ class ChatModuleApp : Application() {
         Timber.plant(Timber.DebugTree())
     }
 
-//    private fun initApplicationComponent(): ApplicationComponent {
-//
-//    }
+    private fun initApplicationComponent(): ApplicationComponent {
+        return appComponent
+    }
 }

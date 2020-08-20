@@ -16,9 +16,6 @@ import kotlin.reflect.KClass
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    @Inject
-    protected lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private var toolbar: Toolbar? = null
 
     fun hideSoftKeyboard() {
