@@ -2,6 +2,7 @@ package by.dzmitrey.danilau.muzhelpermessenger
 
 import android.app.Application
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.ApplicationComponent
+import by.dzmitrey.danilau.muzhelpermessenger.di.components.DaggerApplicationComponent
 import timber.log.Timber
 
 class ChatModuleApp : Application() {
@@ -20,6 +21,6 @@ class ChatModuleApp : Application() {
     }
 
     private fun initApplicationComponent(): ApplicationComponent {
-        return appComponent
+        return DaggerApplicationComponent.create()
     }
 }

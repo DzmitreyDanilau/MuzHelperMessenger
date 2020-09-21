@@ -3,11 +3,10 @@ package by.dzmitrey.danilau.muzhelpermessenger.di.components
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.AuthActivity
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.login.LoginFragment
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration.RegistrationFragment
-import by.dzmitrey.danilau.muzhelpermessenger.di.scopes.ActivityScope
+import by.dzmitrey.danilau.muzhelpermessenger.di.modules.AuthModule
 import dagger.Subcomponent
 
-@ActivityScope
-@Subcomponent
+@Subcomponent(modules = [AuthModule::class])
 interface RegistrationComponent {
 
     @Subcomponent.Factory
