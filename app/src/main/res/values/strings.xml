@@ -4,4 +4,10 @@
     <string name="hint_login">Login</string>
     <string name="hint_email">Input email…</string>
     <string name="hint_password">nput password…</string>
+
+    <string name="web_client_id">259289640344-682g3u7jh0ne31f7sftloo2qmqu65b8p.apps.googleusercontent.com</string>
+
+
+
+
 </resources>

@@ -1,6 +1,8 @@
 package by.dzmitrey.danilau.muzhelpermessenger.di.modules
 
-import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseSignInManager
+import android.content.Context
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseAuthManager
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.GoogleSignInManager
 import dagger.Module
 import dagger.Provides
 
@@ -8,5 +10,8 @@ import dagger.Provides
 class AuthModule {
 
     @Provides
-    fun provideFirebaseAuthManager(): FirebaseSignInManager = FirebaseSignInManager()
+    fun provideFirebaseAuthManager(context: Context): FirebaseAuthManager = FirebaseAuthManager(context)
+
+    @Provides
+    fun provideGoogleSignInManager(context: Context): GoogleSignInManager = GoogleSignInManager(context)
 }
