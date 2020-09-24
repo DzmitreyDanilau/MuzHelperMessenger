@@ -2,7 +2,9 @@ package by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.AuthActivity
@@ -43,6 +45,9 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
         }
     }
 
+    override fun setBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentRegistrationBinding.inflate(inflater, container, false)
+
     private fun initClickListeners() {
         registerWithEmailBtn.setOnClickListener {
             registerUserWithEmail()
@@ -74,8 +79,8 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
 
         viewModel.getFirebaseAuthResult().observe(viewLifecycleOwner) {
             when (it) {
-                FirebaseAuthResult.Success -> Toast.makeText(requireActivity(), "Result: Success", Toast.LENGTH_LONG).show()
-                FirebaseAuthResult.Failed() -> Toast.makeText(requireActivity(), "Result: Failed", Toast.LENGTH_LONG).show()
+                is FirebaseAuthResult.Success -> navigator.navigateHome(requireActivity())
+                is FirebaseAuthResult.Failed -> Toast.makeText(requireActivity(), "Result: Failed", Toast.LENGTH_LONG).show()
             }
         }
     }

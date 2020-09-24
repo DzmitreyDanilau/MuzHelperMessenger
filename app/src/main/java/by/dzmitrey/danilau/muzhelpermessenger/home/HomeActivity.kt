@@ -8,11 +8,12 @@ import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.login.LoginFragment
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration.RegistrationFragment
+import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.HomeComponent
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.replaceFragment
 import by.dzmitrey.danilau.muzhelpermessenger.utils.IntentUtil
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     companion object {
         @JvmStatic
@@ -26,7 +27,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
         initFragment()
     }
 
@@ -38,4 +38,6 @@ class HomeActivity : AppCompatActivity() {
         homeComponent = (application as ChatModuleApp).appComponent.homeComponent().create()
         homeComponent.inject(this)
     }
+
+    override val layoutResId = R.layout.activity_home
 }

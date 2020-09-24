@@ -6,21 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.EMPTY
 import javax.inject.Inject
 
-abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    protected lateinit var binding: B
+    protected var binding: B? = null
 
     abstract val viewModel: VM
 
@@ -29,8 +28,13 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
     open val toolBarTitle = String.EMPTY
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        return binding.root
+        binding = this.setBinding(inflater, container)
+        return binding!!.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
     @MainThread
@@ -39,4 +43,6 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?): B
 }
