@@ -47,7 +47,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (supportFragmentManager.backStackEntryCount == 1) finish() else super.onBackPressed()
     }
 
-    private fun setToolbarTitle(title: String?) {
+    fun setToolbarTitle(title: String?) {
         title?.let {
             toolbar?.title = title
         }

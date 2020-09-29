@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Common theme colors-->
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryVariant">#00574B</color>
+    <color name="colorSecondary">?attr/colorSecondary</color>
+    <color name="colorError">#ED1808</color>
+    <color name="colorSurface">#FFFFFF</color>
 
     <color name="black">#171616</color>
 </resources>

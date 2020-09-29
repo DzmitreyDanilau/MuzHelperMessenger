@@ -66,12 +66,6 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
         }
     }
 
-    private fun checkLoggedInState() {
-//        firebaseAuthManager.firebaseUser?.let {
-//            navigator.navigateHome(requireActivity())
-//        }
-    }
-
     private fun observeViewModel() {
         viewModel.getGoogleSignInOptions().observe(viewLifecycleOwner) {
             signInWithGoogle(it)

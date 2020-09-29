@@ -3,11 +3,8 @@ package by.dzmitrey.danilau.muzhelpermessenger.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
-import by.dzmitrey.danilau.muzhelpermessenger.authenticating.login.LoginFragment
-import by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration.RegistrationFragment
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.HomeComponent
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.replaceFragment
@@ -18,7 +15,7 @@ class HomeActivity : BaseActivity() {
     companion object {
         @JvmStatic
         fun getIntent(context: Context): Intent {
-            return IntentUtil.getIntent<HomeActivity, LoginFragment>(context)
+            return IntentUtil.getIntent<HomeActivity, HomeFragment>(context)
         }
     }
 
@@ -27,6 +24,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
         super.onCreate(savedInstanceState)
+        setToolbarTitle(getString(R.string.home_tool_bar_name))
         initFragment()
     }
 

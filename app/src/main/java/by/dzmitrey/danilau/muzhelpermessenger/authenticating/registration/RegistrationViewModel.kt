@@ -3,7 +3,6 @@ package by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.CredentialsEntity
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.FirebaseAuthResult
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseViewModel

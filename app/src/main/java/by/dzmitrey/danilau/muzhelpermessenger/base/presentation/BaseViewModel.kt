@@ -8,5 +8,6 @@ abstract class BaseViewModel : ViewModel() {
     private val error: MutableLiveData<Throwable> = MutableLiveData()
 
     fun getError(): LiveData<Throwable> = error
+
 }
 

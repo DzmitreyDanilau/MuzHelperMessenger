@@ -19,6 +19,10 @@ class FirebaseAuthManager @Inject constructor(private val context: Context) {
 
     private val firebaseAuth = Firebase.auth
 
+    fun getCurrentFirebaseUser() : FirebaseUser? {
+        return firebaseAuth.currentUser
+    }
+
     suspend fun googleAuthForFirebase(credentials: AuthCredential?): FirebaseUser? {
         return credentials?.let {
             authWithGoogle(credentials)

@@ -1,16 +1,28 @@
 package by.dzmitrey.danilau.muzhelpermessenger.authenticating
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
+import by.dzmitrey.danilau.muzhelpermessenger.authenticating.login.LoginFragment
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.registration.RegistrationFragment
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.RegistrationComponent
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.replaceFragment
+import by.dzmitrey.danilau.muzhelpermessenger.home.HomeActivity
+import by.dzmitrey.danilau.muzhelpermessenger.utils.IntentUtil
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
 import javax.inject.Inject
 
 class AuthActivity : BaseActivity() {
+
+    companion object {
+        @JvmStatic
+        fun getIntent(context: Context): Intent {
+            return IntentUtil.getIntent<AuthActivity, LoginFragment>(context)
+        }
+    }
 
     @Inject
     lateinit var navigator: Navigator
@@ -22,7 +34,6 @@ class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
         initFragment()
     }
 
@@ -32,6 +43,6 @@ class AuthActivity : BaseActivity() {
     }
 
     private fun initFragment() {
-        replaceFragment(R.id.fragmentContainer, RegistrationFragment())
+        replaceFragment(R.id.fragmentContainer, LoginFragment())
     }
 }
