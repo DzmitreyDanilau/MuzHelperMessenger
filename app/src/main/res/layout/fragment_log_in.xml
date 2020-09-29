@@ -4,8 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:textSize="@dimen/default_text_size"
+        app:layout_constraintStart_toStartOf="@id/password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/email"
+        android:text="@string/login_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
+        style="@style/TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/login_hint_email"
@@ -15,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/TextLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -22,6 +34,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
+        style="@style/TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/login_hint_password"
@@ -30,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/email">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/TextLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -43,11 +57,11 @@
         app:buttonSize="wide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logInBtn"
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintVertical_bias="0" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/logInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

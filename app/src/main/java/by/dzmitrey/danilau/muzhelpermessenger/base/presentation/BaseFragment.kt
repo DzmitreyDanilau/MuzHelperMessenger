@@ -27,6 +27,11 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
     open val toolBarTitle = String.EMPTY
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        performDI()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = this.setBinding(inflater, container)
         return binding!!.root
@@ -44,5 +49,7 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?): B
+    abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean = false): B
+
+    abstract fun performDI()
 }

@@ -14,6 +14,7 @@ import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.GoogleSign
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseFragment
 import by.dzmitrey.danilau.muzhelpermessenger.databinding.FragmentRegistrationBinding
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
+import by.dzmitrey.danilau.muzhelpermessenger.utils.getText
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import kotlinx.android.synthetic.main.fragment_registration.*
 import javax.inject.Inject
@@ -26,11 +27,6 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
     override val viewModel: RegistrationViewModel by lazyViewModel()
 
     override fun getLayoutId() = R.layout.fragment_registration
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        performDI()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,7 +41,7 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
         }
     }
 
-    override fun setBinding(inflater: LayoutInflater, container: ViewGroup?) =
+    override fun setBinding(inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean) =
         FragmentRegistrationBinding.inflate(inflater, container, false)
 
     private fun initClickListeners() {
@@ -59,9 +55,9 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
     }
 
     private fun registerUserWithEmail() {
-        val email = email.text.toString()
-        val password = password.text.toString()
-        if (email.isNotEmpty() && password.isNotEmpty()) {
+        val email = binding?.email?.getText()
+        val password = binding?.password?.getText()
+        if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
             viewModel.registerWithEmailAndPassword(CredentialsEntity(email, password))
         }
     }
@@ -94,7 +90,7 @@ class RegistrationFragment : BaseFragment<RegistrationViewModel, FragmentRegistr
         viewModel.googleAuthForFirebase(data)
     }
 
-    private fun performDI() {
+    override fun performDI() {
         (activity as AuthActivity).registrationComponent.inject(this)
     }
 }

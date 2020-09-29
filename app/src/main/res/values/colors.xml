@@ -3,7 +3,7 @@
     <!--Common theme colors-->
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryVariant">#00574B</color>
-    <color name="colorSecondary">?attr/colorSecondary</color>
+    <color name="colorSecondary">#1BBDA7</color>
     <color name="colorError">#ED1808</color>
     <color name="colorSurface">#FFFFFF</color>
 

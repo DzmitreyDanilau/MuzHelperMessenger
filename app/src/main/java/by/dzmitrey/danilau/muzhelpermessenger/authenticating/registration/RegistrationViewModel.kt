@@ -7,6 +7,7 @@ import by.dzmitrey.danilau.muzhelpermessenger.authenticating.CredentialsEntity
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.FirebaseAuthResult
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,5 +51,9 @@ class RegistrationViewModel @Inject constructor(private val registrationReposito
 
     fun getGoogleSignInClient() {
         googleSignInClient.value = registrationRepository.getGoogleSignInClient()
+    }
+
+    fun getCurrentUser(): FirebaseUser? {
+        return registrationRepository.getCurrentUser()
     }
 }

@@ -12,8 +12,12 @@ class Navigator @Inject constructor() {
         startActivity(context) { HomeActivity.getIntent(it) }
     }
 
-    fun navigateToLogin(context: Context){
-        startActivity(context){AuthActivity.getIntent(it)}
+    fun navigateToRegistration(context: Context) {
+        startActivity(context) { AuthActivity.getIntent(it) }
+    }
+
+    fun navigateToLogin(context: Context) {
+        startActivity(context) { AuthActivity.getIntent(context) }
     }
 
     private fun startActivity(context: Context?, intent: (Context) -> Intent) {

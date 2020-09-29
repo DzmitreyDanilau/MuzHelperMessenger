@@ -22,7 +22,6 @@ class HomeActivity : BaseActivity() {
     lateinit var homeComponent: HomeComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        performDI()
         super.onCreate(savedInstanceState)
         setToolbarTitle(getString(R.string.home_tool_bar_name))
         initFragment()
@@ -32,7 +31,7 @@ class HomeActivity : BaseActivity() {
         replaceFragment(R.id.fragmentContainer, HomeFragment())
     }
 
-    private fun performDI() {
+    override fun performDI() {
         homeComponent = (application as ChatModuleApp).appComponent.homeComponent().create()
         homeComponent.inject(this)
     }

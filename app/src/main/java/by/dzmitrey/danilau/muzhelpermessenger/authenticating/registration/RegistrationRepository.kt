@@ -22,4 +22,6 @@ class RegistrationRepository @Inject constructor(
     }
 
     fun getGoogleSignInClient() = googleSignManager.configureSignInClient()
+
+    fun getCurrentUser() = firebaseAuthManager.getCurrentFirebaseUser()
 }

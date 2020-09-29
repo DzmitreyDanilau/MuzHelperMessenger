@@ -8,35 +8,15 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import timber.log.Timber
-import javax.inject.Inject
-import kotlin.reflect.KClass
 
 abstract class BaseActivity : AppCompatActivity() {
 
     private var toolbar: Toolbar? = null
 
-    fun hideSoftKeyboard() {
-        if (currentFocus != null) {
-            val inputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-        }
-    }
-
-
-    fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    fun closeAndStartAnother(intent: Intent) {
-        finish()
-        startActivity(intent)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        performDI()
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
         Timber.d("onCreate %s", this.toString())
@@ -53,10 +33,30 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun hideSoftKeyboard() {
+        if (currentFocus != null) {
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+    }
+
+    fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun closeAndStartAnother(intent: Intent) {
+        finish()
+        startActivity(intent)
+    }
+
     private fun initViews() {
         toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
     }
 
     @get:LayoutRes
     abstract val layoutResId: Int
+
+    protected abstract fun performDI()
 }

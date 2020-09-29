@@ -12,6 +12,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun getLayoutId() = R.layout.fragment_home
 
-    override fun setBinding(inflater: LayoutInflater, container: ViewGroup?) =
+    override fun setBinding(inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean) =
         FragmentHomeBinding.inflate(inflater, container, false)
+
+    override fun performDI() {
+        (activity as HomeActivity).homeComponent.inject(this)
+    }
 }

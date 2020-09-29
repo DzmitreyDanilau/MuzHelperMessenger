@@ -93,6 +93,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifecycleVersion}"
+    implementation "android.arch.lifecycle:extensions:${lifecycleVersion}"
 
     //form edit text
     implementation "com.andreabaccega:android-form-edittext:$formEditTextVersion"

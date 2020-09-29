@@ -36,11 +36,9 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        performDI()
         super.onCreate(savedInstanceState)
         handler.postDelayed(handleAuthStatusRunnable, SPLASH_SLEEP)
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -50,12 +48,11 @@ class SplashActivity : BaseActivity() {
     private fun handleAuthStatus() {
         firebaseAuthManager.getCurrentFirebaseUser()?.let {
             navigator.navigateHome(this)
-        } ?: navigator.navigateToLogin(this)
+        } ?: navigator.navigateToRegistration(this)
     }
 
-    private fun performDI() {
+    override fun performDI() {
         splashActivityComponent = (application as ChatModuleApp).appComponent
         splashActivityComponent.inject(this)
     }
-
 }

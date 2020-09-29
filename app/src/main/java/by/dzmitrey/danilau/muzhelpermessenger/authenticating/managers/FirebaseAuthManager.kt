@@ -19,7 +19,7 @@ class FirebaseAuthManager @Inject constructor(private val context: Context) {
 
     private val firebaseAuth = Firebase.auth
 
-    fun getCurrentFirebaseUser() : FirebaseUser? {
+    fun getCurrentFirebaseUser(): FirebaseUser? {
         return firebaseAuth.currentUser
     }
 
@@ -33,6 +33,10 @@ class FirebaseAuthManager @Inject constructor(private val context: Context) {
         return authWithEmailAndPassword(credentials)
     }
 
+    suspend fun loginInWithEmailAndPassword(credentials: CredentialsEntity): FirebaseUser? {
+        return signInWithEmailAndPassword(credentials)
+    }
+
     private suspend fun authWithGoogle(credentials: AuthCredential): FirebaseUser? {
         firebaseAuth.signInWithCredential(credentials).await()
         return firebaseAuth.currentUser ?: throw FirebaseAuthException("", "")
@@ -40,6 +44,11 @@ class FirebaseAuthManager @Inject constructor(private val context: Context) {
 
     private suspend fun authWithEmailAndPassword(credentials: CredentialsEntity): FirebaseUser? {
         firebaseAuth.createUserWithEmailAndPassword(credentials.email, credentials.password).await()
+        return firebaseAuth.currentUser ?: throw FirebaseAuthException("", "")
+    }
+
+    private suspend fun signInWithEmailAndPassword(credentials: CredentialsEntity): FirebaseUser? {
+        firebaseAuth.signInWithEmailAndPassword(credentials.email, credentials.password).await()
         return firebaseAuth.currentUser ?: throw FirebaseAuthException("", "")
     }
 }
