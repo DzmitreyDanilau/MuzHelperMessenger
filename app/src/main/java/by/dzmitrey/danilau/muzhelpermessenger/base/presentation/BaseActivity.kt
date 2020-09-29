@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.viewbinding.ViewBinding
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import timber.log.Timber
 
@@ -18,7 +19,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        setContentView(viewBinding.root)
         Timber.d("onCreate %s", this.toString())
         initViews()
     }
@@ -59,4 +60,6 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract val layoutResId: Int
 
     protected abstract fun performDI()
+
+    abstract val viewBinding: ViewBinding
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
+import by.dzmitrey.danilau.muzhelpermessenger.databinding.ActivityHomeBinding
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.HomeComponent
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.replaceFragment
 import by.dzmitrey.danilau.muzhelpermessenger.utils.IntentUtil
@@ -18,6 +19,8 @@ class HomeActivity : BaseActivity() {
             return IntentUtil.getIntent<HomeActivity, HomeFragment>(context)
         }
     }
+
+    override val viewBinding by viewBinding(ActivityHomeBinding::inflate)
 
     lateinit var homeComponent: HomeComponent
 

@@ -26,16 +26,16 @@ class AuthActivity : BaseActivity() {
     @Inject
     lateinit var navigator: Navigator
 
-
     lateinit var registrationComponent: RegistrationComponent
+
+    override val viewBinding by viewBinding(ActivityAuthBinding::inflate)
 
     override val layoutResId = R.layout.activity_auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         performDI()
         super.onCreate(savedInstanceState)
-        val binding = ActivityAuthBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(viewBinding.root)
         initFragment()
     }
 

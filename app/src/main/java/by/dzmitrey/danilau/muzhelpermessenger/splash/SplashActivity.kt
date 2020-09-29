@@ -7,8 +7,10 @@ import by.dzmitrey.danilau.muzhelpermessenger.ChatModuleApp
 import by.dzmitrey.danilau.muzhelpermessenger.R
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.FirebaseAuthManager
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseActivity
+import by.dzmitrey.danilau.muzhelpermessenger.databinding.ActivitySplashBinding
 import by.dzmitrey.danilau.muzhelpermessenger.di.components.ApplicationComponent
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
+import by.dzmitrey.danilau.muzhelpermessenger.utils.viewBinding
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -17,6 +19,8 @@ class SplashActivity : BaseActivity() {
     companion object {
         private val SPLASH_SLEEP = TimeUnit.SECONDS.toMillis(2)
     }
+
+    override val viewBinding by viewBinding(ActivitySplashBinding::inflate)
 
     @Inject
     lateinit var navigator: Navigator
@@ -27,7 +31,7 @@ class SplashActivity : BaseActivity() {
     @LayoutRes
     override val layoutResId = R.layout.activity_splash
 
-    lateinit var splashActivityComponent: ApplicationComponent
+    private lateinit var splashActivityComponent: ApplicationComponent
 
     private val handler = Handler()
     private val handleAuthStatusRunnable = {
