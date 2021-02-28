@@ -1,0 +1,92 @@
+ext {
+
+  kotlin_version = '1.4.30'
+  gms_version = '4.3.3'
+
+  kotlin = [
+      stdlib8: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+      stdlib7: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+  ]
+
+  final androidx_lifecycle_version_legacy = '2.2.0'
+  final androidx_preference_version = "1.1.1"
+  final appCompat_version = '1.3.0-alpha02'
+  final androidx_core = '1.3.2'
+  final androidx_lifecycle = "2.3.0"
+  final drawerLayout = '1.1.1'
+  final constraintLayout = '2.0.4'
+  final recyclerView =  '1.1.0'
+  final nav_version = "2.3.3"
+
+  androidx = [
+      coreKtx: "androidx.core:core-ktx:$androidx_core",
+      appcompat: "androidx.appcompat:appcompat:$appCompat_version",
+      constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayout",
+      drawerLayout: "androidx.drawerlayout:drawerlayout:$drawerLayout",
+      recyclerView: "androidx.recyclerview:recyclerview:$recyclerView",
+
+      lifecycle: [
+          runtimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle",
+          common: "androidx.lifecycle:lifecycle-common-java8:$androidx_lifecycle",
+          viewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle",
+          liveDataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle",
+          extensionsLegacy: "androidx.lifecycle:lifecycle-extensions:$androidx_lifecycle_version_legacy" //todo legacy - use newer library
+      ],
+
+      preference: [
+          preferenceKtx: "androidx.preference:preference-ktx:$androidx_preference_version"
+      ],
+
+      navigation: [
+          fragmentKtx: "androidx.navigation:navigation-fragment-ktx:$nav_version",
+          uiKtx: "androidx.navigation:navigation-ui-ktx:$nav_version"
+      ]
+  ]
+
+  final dagger_version = '2.28.3'
+  dagger = [
+      dagger: "com.google.dagger:dagger:$dagger_version",
+      compiler: "com.google.dagger:dagger-compiler:$dagger_version",
+      android: "com.google.dagger:dagger-android:$dagger_version",
+      androidSupport: "com.google.dagger:dagger-android-support:$dagger_version",
+      androidProcessor: "com.google.dagger:dagger-android-processor:$dagger_version"
+  ]
+
+  final glide_version = '4.11.0'
+  glide = [
+      glide: "com.github.bumptech.glide:glide:$glide_version",
+      compiler: "com.github.bumptech.glide:compiler:$glide_version"
+  ]
+
+  util = [
+      timber: "com.jakewharton.timber:timber:4.7.1",
+  ]
+
+  google = [
+      material: 'com.google.android.material:material:1.3.0-alpha01',
+      findBugs: 'com.google.code.findbugs:jsr305:3.0.2',
+      playServicesAuth: 'com.google.android.gms:play-services-auth:19.0.0'
+  ]
+
+  final formEditTextVersion = "1.3.5"
+  uiUtil = [
+      formEditText:  "com.andreabaccega:android-form-edittext:$formEditTextVersion"
+  ]
+
+  final firebase_bom_version = "26.0.0"
+  firebase = [
+      bom: "com.google.firebase:firebase-bom:$firebase_bom_version",
+      analyticsKtx: 'com.google.firebase:firebase-analytics-ktx', // version comes from 'bom' automatically
+      database: 'com.google.firebase:firebase-database-ktx:19.6.0',
+      authKtx: 'com.google.firebase:firebase-auth-ktx:20.0.2',
+      auth: 'com.google.firebase:firebase-auth:20.0.2'
+  ]
+
+  final kotlinCoroutinesVersion = '1.3.9'
+  final kotlinCoroutinesPlayServices = '1.3.9'
+  kotlin_coroutines = [
+      core: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion",
+      android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion",
+      playServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinCoroutinesPlayServices"
+  ]
+}

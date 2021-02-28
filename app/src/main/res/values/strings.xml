@@ -1,19 +1,3 @@
 <resources>
-    <string name="app_name">MuzHelperMessenger</string>
 
-    <!--Login-->
-    <string name="hint_login_button">Login</string>
-    <string name="login_hint_email">Input email…</string>
-    <string name="login_hint_password">Input password…</string>
-    <string name="login_button_text">Login</string>
-
-    <!--Regostration-->
-    <string name="registration_hint_email">Input email…</string>
-    <string name="registration_password">Input password…</string>
-    <string name="registration_button_text">Register</string>
-
-    <!--Home-->
-    <string name="home_tool_bar_name">Home</string>
-
-    <string name="web_client_id">259289640344-682g3u7jh0ne31f7sftloo2qmqu65b8p.apps.googleusercontent.com</string>
 </resources>

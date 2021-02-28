@@ -9,20 +9,18 @@ import by.dzmitrey.danilau.muzhelpermessenger.authenticating.AuthActivity
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.CredentialsEntity
 import by.dzmitrey.danilau.muzhelpermessenger.authenticating.FirebaseAuthResult
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseFragment
-import by.dzmitrey.danilau.muzhelpermessenger.databinding.FragmentLogInBinding
 import by.dzmitrey.danilau.muzhelpermessenger.extensions.EMPTY
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
-import by.dzmitrey.danilau.muzhelpermessenger.utils.getText
 import javax.inject.Inject
 
-class LoginFragment : BaseFragment<LoginViewModel, FragmentLogInBinding>() {
+class LoginFragment : BaseFragment<LoginViewModel, FragmentLogin>() {
 
     @Inject
     lateinit var navigator: Navigator
 
     override val viewModel: LoginViewModel by lazyViewModel()
 
-    override fun getLayoutId() = R.layout.fragment_log_in
+    override fun getLayoutId() = R.layout.frag
 
     override fun setBinding(inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean): FragmentLogInBinding {
         return FragmentLogInBinding.inflate(inflater, container, false)

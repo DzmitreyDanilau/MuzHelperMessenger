@@ -14,7 +14,6 @@ import by.dzmitrey.danilau.muzhelpermessenger.authenticating.managers.GoogleSign
 import by.dzmitrey.danilau.muzhelpermessenger.base.presentation.BaseFragment
 import by.dzmitrey.danilau.muzhelpermessenger.databinding.FragmentRegistrationBinding
 import by.dzmitrey.danilau.muzhelpermessenger.utils.Navigator
-import by.dzmitrey.danilau.muzhelpermessenger.utils.getText
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import kotlinx.android.synthetic.main.fragment_registration.*
 import javax.inject.Inject

@@ -1,0 +1,10 @@
+plugins {
+  id 'java-library'
+  id 'kotlin'
+}
+
+apply from: '../dependencies.gradle'
+
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
